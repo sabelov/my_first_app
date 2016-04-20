@@ -1,0 +1,19 @@
+<h2> All user collections </h2>
+
+<% if @collections.empty?%>
+  <b>the user has no collections</b>
+<% else %>
+  <table>
+    <tr>
+      <th>Collection</th>
+      <th>User ID</th>
+    </tr>
+    <% @collections.each do |c| %>
+    <tr>
+      <td><%= c.name %></td>
+      <td><%= c.user_id%></td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
+<p><%= link_to "Add new collection", new_collection_path %></p>
