@@ -9,6 +9,7 @@ class CollectionsController < ApplicationController
   # /collections/:id
   def show
     @collection = Collection.find(params[:id])
+    @imgs = Img.where(collection_id: @collection.id)
   end
 
   # /collections/new
@@ -18,7 +19,7 @@ class CollectionsController < ApplicationController
 
   # /collections
   def create
-    collection_params = params.require(:collection).permit(:name)
+    #collection_params = params.require(:collection).permit(:name)
     @collection = Collection.create(collection_params)
     @collection.update_attributes(user_id: current_user.id)
     # @collection.user_id = current_user.id
@@ -31,17 +32,19 @@ class CollectionsController < ApplicationController
 
   # /collections/:id/edit
   def edit
-
   end
 
   # /collections/:id
   def update
-
   end
 
   # /collections/:id
   def destroy
+  end
 
+  def show_all_collections
+    @collections = Collection.all
+    redirect_to collections_path
   end
 
   # private
@@ -51,7 +54,7 @@ class CollectionsController < ApplicationController
   # #  end
   #
   #   # Never trust parameters from the scary internet, only allow the white list through.
-  #   def collection_params
-  #     params.require(:collection).permit(:name)
-  #   end
+     def collection_params
+       params.require(:collection).permit(:name)
+     end
 end

@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :collections
   root to: "collections#index"
   devise_for :users
   resources :users
+  resources :collections do
+    resources :imgs
+    resources :links
+    #get 'show_all_collections', on: member
+  end
+  get 'collections/show_all_collections', to: 'collections#show_all_collections'
 
 
 
