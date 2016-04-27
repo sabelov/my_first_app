@@ -1,21 +1,40 @@
 <h2><%= @collection.name %></h2>
-<p><%= @collection.id %></p>
-<p><%= @collection.user_id %></p>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Img</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <% @imgs.each do |i| %>
-  <tr>
-    <td><%= link_to i.name, collection_img_path(@collection.id, i.id) %></td>
-    <td><%= image_tag i.picture.url(:medium)%></td>
-    <td><%= link_to 'Edit', edit_collection_img_path(@collection.id, i.id)%></td>
-    <td><%= link_to 'Destroy', collection_img_path(@collection.id, i), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-  <% end %>
-</table>
+<% if @collection.kind == "images"%>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Img</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% @imgs.each do |i| %>
+    <tr>
+      <td><%= link_to i.name, collection_img_path(@collection.id, i.id) %></td>
+      <td><%= image_tag i.picture.url(:medium)%></td>
+      <td><%= link_to 'Edit', edit_collection_img_path(@collection.id, i.id)%></td>
+      <td><%= link_to 'Destroy', collection_img_path(@collection.id, i), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </table>
+  <p><%= link_to "Add new image", new_collection_img_path(@collection.id) %></p>
+<% end %>
 
-<p><%= link_to "Add new image", new_collection_img_path(@collection.id) %></p>
+<% if @collection.kind == "links" %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Link</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% @links.each do |l| %>
+    <tr>
+      <td><%= link_to l.name, collection_link_path(@collection.id, l.id) %></td>
+      <td><a href="<%=l.reference%>", target="_blank"><%=l.reference%></a></td>
+      <td><%= link_to 'Edit', edit_collection_link_path(@collection.id, l.id)%></td>
+      <td><%= link_to 'Destroy', collection_link_path(@collection.id, l), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </table>
+  <p><%= link_to "Add new link", new_collection_link_path(@collection.id) %></p>
+<% end %>

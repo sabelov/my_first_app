@@ -6,15 +6,17 @@
   <table>
     <tr>
       <th>Collection</th>
-      <th>User ID</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
     <% @collections.each do |c| %>
     <tr>
-      <td><%= c.name %></td>
-      <td><%= c.user_id%></td>
+      <td><%= link_to c.name, collection_path(c) %></td>
+      <td><%= link_to 'Edit', edit_collection_path(c) %></td>
+      <td><%= link_to 'Destroy', collection_path(c), method: :delete, data: { confirm: 'Are you sure?' }%></td>
     </tr>
     <% end %>
   </table>
 <% end %>
 <p><%= link_to "Add new collection", new_collection_path %></p>
-<p><%= link_to "Show all collections", collections_show_all_collections_path %></p>
+<p><%= link_to "All collections", collections_all_collections_path %></p>

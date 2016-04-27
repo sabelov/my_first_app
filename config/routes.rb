@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :links
     #get 'show_all_collections', on: member
   end
-  get 'collections/show_all_collections', to: 'collections#show_all_collections'
+  get 'collections/all_collections', to: 'collections#all_collections'
 
 
 

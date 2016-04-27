@@ -1,0 +1,7 @@
+<h2>Create new link</h2>
+
+<%= form_for ([@collection, @link]) do |f| %>
+
+  <%=render partial: "form", locals: {f: f}%>
+
+<% end %>
