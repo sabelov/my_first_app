@@ -1,0 +1,12 @@
+
+<p><%= @img.id %></p>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @img.name %>
+</p>
+<p>
+  <strong>IMG</strong>
+  <%= image_tag @img.picture.url(:medium) %>
+</p>

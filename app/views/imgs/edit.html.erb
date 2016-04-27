@@ -1,0 +1,7 @@
+<h2>Edit img</h2>
+
+<%= form_for ([@collection, @img]) do |f| %>
+
+  <%=render partial: "form", locals: {f: f}%>
+
+<% end %>

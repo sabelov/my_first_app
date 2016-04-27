@@ -1,0 +1,8 @@
+<h2>Edit new collection</h2>
+
+<%= form_for @collection do |f| %>
+
+  <%=render partial: "form", locals: {f: f}%>
+
+  <p><%= f.submit %></p>
+<% end %>
