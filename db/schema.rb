@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427213521) do
+ActiveRecord::Schema.define(version: 20160428003726) do
 
   create_table "collections", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "kind"
+    t.text     "description"
   end
 
   create_table "imgs", force: :cascade do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160427213521) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.integer  "collection_id"
+    t.text     "description"
   end
 
   create_table "links", force: :cascade do |t|
@@ -38,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160427213521) do
     t.string   "name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.text     "description"
   end
 
   create_table "users", force: :cascade do |t|

@@ -2,13 +2,19 @@ Rails.application.routes.draw do
 
   root to: "collections#index"
   devise_for :users
-  resources :users
+  #resources :users
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+  get 'collections/all_collections', to: 'collections#all_collections'
   resources :collections do
     resources :imgs
     resources :links
     #get 'show_all_collections', on: member
   end
-  get 'collections/all_collections', to: 'collections#all_collections'
+
+
+  #get '/patients/:id', to: 'patients#show'
 
 
 

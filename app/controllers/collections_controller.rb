@@ -56,7 +56,7 @@ class CollectionsController < ApplicationController
 
   def all_collections
     @collections = Collection.all
-    redirect_to collections_path
+    render "index"
   end
 
   # private
@@ -67,6 +67,6 @@ class CollectionsController < ApplicationController
   #
   #   # Never trust parameters from the scary internet, only allow the white list through.
      def collection_params
-       params.require(:collection).permit(:name, :kind)
+       params.require(:collection).permit(:name, :kind, :description)
      end
 end

@@ -57,6 +57,6 @@ class LinksController < ApplicationController
   private
 
      def link_params
-       params.require(:link).permit(:name, :collection_id, :reference)
+       params.require(:link).permit(:name, :collection_id, :reference, :description)
      end
 end
